@@ -1,20 +1,20 @@
 import React from "react";
-// import HelloBootstrap from "./components/HelloBootstrap";
-import Navbar from "./Components/Navbar";
-import Jumbotron from "./components/Jumbotron";
-import Card from "./components/Card";
+import Header from "./Components/Header/";
+import Search from "./Components/Search/";
+import EmployeeTable from "./components/EmployeeTable/";
+
 
 function App() {
-  return(
-  <>
-    <Navbar/>
-    <Jumbotron/>
-    <Card fullname="Nelson Ezeume"/>
-    <Card fullname="Janet Ahonle"/>
-    <Card fullname="Steve Jobs"/>
-  </>
-  // return <HelloBootstrap/>;
-  )
+  return (
+    
+    <>
+      <Header />
+      <Search />
+      <br /><br />
+      <EmployeeTable />
+
+    </>
+  );
 }
 
 export default App;
