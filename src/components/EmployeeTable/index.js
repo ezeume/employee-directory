@@ -59,7 +59,7 @@ class EmployeeTable extends React.Component {
     
     // }
 
-    sortByName = () => {
+    sortByFirstName = () => {
         let sortedEmployees = this.state.employees.sort((a, b) => {
             if(b.name.first > a.name.first) {
                 return -1;
@@ -87,6 +87,36 @@ class EmployeeTable extends React.Component {
         this.setState({employees: sortedEmployees});
     } 
 
+
+    sortByLastName = () => {
+        let sortedEmployees = this.state.employees.sort((a, b) => {
+            if(b.name.first > a.name.first) {
+                return -1;
+            }
+
+            if(a.name.first > b.name.first) {
+                return 1;
+            }
+
+            return 0;
+        
+        });
+
+        console.log(sortedEmployees);
+
+        // If descending, reverse with sortedEmployees.reverse()
+        if(this.state.sortOrder === "DESC") {
+            sortedEmployees.reverse();
+            this.setState({sortOrder: "ASC"});
+        } else {
+            this.setState({sortOrder: "DESC"});
+        }
+            this.setState({ employees: sortedEmployees})
+
+        this.setState({employees: sortedEmployees});
+    } 
+
+
     //Render the search results on the page 
     render() {
             return(
@@ -94,7 +124,8 @@ class EmployeeTable extends React.Component {
                     <thead>
                         <tr>
                             <th>Image</th>
-                            <th>Name<button onClick={this.sortByName}>Sort</button></th>
+                            <th>FirstName<button onClick={this.sortByFirstName}>Sort</button></th>
+                            <th>LastName<button onClick={this.sortByLastName}>Sort</button></th>
                             <th>Phone</th>
                             <th>Email</th>
                             <th>DOB</th>
