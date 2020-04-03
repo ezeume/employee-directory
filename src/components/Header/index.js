@@ -5,8 +5,6 @@ function Header() {
     return (
         <>
             <h1>Employee directory</h1>
-            <p>lorem islum test</p>
-
         </>
     );
 }
