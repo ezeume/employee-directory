@@ -5,7 +5,6 @@ const BASEURL = "https://randomuser.me/api/";
 
 
 
-
 export default {
     search: function() {
         //console.log(BASEURL+query+APIKEY);

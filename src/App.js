@@ -5,11 +5,14 @@ import EmployeeTable from "./components/EmployeeTable/";
 
 
 function App() {
+  function userSearch(e){
+    console.log(e)
+  }
   return (
     
     <>
       <Header />
-      <Search />
+      <Search handleSearchChange={userSearch}/>
       <br /><br />
       <EmployeeTable />
 

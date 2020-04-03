@@ -14,7 +14,11 @@ class EmployeeTable extends React.Component {
     //API call
     componentDidMount() {
         API.search().then(results => {
-        this.setState({ employees: results.data.results});
+        this.setState({ employees: results.data.results.map(function(result){
+            result.fullName=result.name.first + " " + result.name.last
+            console.log(result)
+            return result;
+        })});
         });
     }
 
@@ -97,7 +101,7 @@ class EmployeeTable extends React.Component {
                         {this.state.employees.map(person => (
                         <tr key={person.id.value}>
                             <td><img src={person.picture.thumbnail}alt="thumbnail" /></td>
-                            <td>{person.name.first}</td>
+                            <td>{person.fullName}</td>
                             {/* <td>{person.name.last}</td> */}
                             <td>{person.phone}</td>
                             <td>{person.email}</td>

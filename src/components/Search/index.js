@@ -6,7 +6,7 @@ class Search extends React.Component {
         return (
             <>
             
-            <input className="txtInput" type="text" id="searchBox" placeholder="Search" />
+            <input type="text" id="searchBox" placeholder="Search" onChange={e =>{this.props.handleSearchChange(e)}} />
             </>
 
         );
