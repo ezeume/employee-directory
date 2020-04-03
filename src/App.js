@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./Components/Header/";
-import Search from "./Components/Search/";
+import Header from "./components/Header/";
+import Search from "./components/Search/";
 import EmployeeTable from "./components/EmployeeTable/";
 
 

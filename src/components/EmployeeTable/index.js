@@ -1,6 +1,8 @@
 import React from "react";
 import "./style.css";
 
+import API from "../../API"
+
 
 const employees = [
     {
@@ -33,26 +35,51 @@ const employees = [
 class EmployeeTable extends React.Component {
 
     state = {
-        employees: employees
+        employees: [{}],
+        sortOrder: ""
     }
 
+    componentDidMount() {
+        API.search().then(results => {
+          this.setState({
+            employees: results.data.results
+       
+          });
+        });
+      }
+
+    // componentDidMount(){
+    //     let temp = API.search()
+    //     .then(function(data){
+    //         console.log(data.data.results[0].picture.thumbnail)
+    //         console.log(data.data.results[0].email);
+    //         console.log(data.data.results[0].name.first)
+    //         console.log(data.data.results[0].dob.date)
+
+    //         this.setState({employees:data.data.results});            
+    //     });
+       
+    // }
+
     sortByName = () => {
-      let sortedEmployees = this.state.employees.sort((a, b) 
-      => {
-          if(b.name > a.name) {
-              return -1;
-          }
+        let sortedEmployees = this.state.employees.sort((a, b) => {
+            if(b.name.first > a.name.first) {
+                return -1;
+            }
 
-          if(a.name > b.name) {
-              return 1;
-          }
+            if(a.name.first > b.name.first) {
+                return 1;
+            }
 
-          return 0;
+            return 0;
         
         });
 
-      console.log(sortedEmployees);
-      this.setState({employees: sortedEmployees});
+        console.log(sortedEmployees);
+
+        // If descending, reverse with sortedEmployees.reverse()
+
+        this.setState({employees: sortedEmployees});
     } 
 
     render() {
@@ -72,7 +99,7 @@ class EmployeeTable extends React.Component {
                     <tbody>
                         {this.state.employees.map(person => (
                         <tr key={person.id}>
-                            <td>{person.image}</td>
+                            <td>{person.picture}</td>
                             <td>{person.name}</td>
                             <td>{person.phone}</td>
                             <td>{person.email}</td>
