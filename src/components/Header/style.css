@@ -1,13 +1,18 @@
 .header {
     background: rgb(12, 12, 51);
     height: 200px;
-
+    border-bottom: solid;
+    border-color: red;
 }
 
 .title {
+    text-align: center;
     color: white;
+    padding-top: 40px;
 }
 
 .desc{
+    text-align: center;
     color: white;
+    padding-top: 10px;
 }

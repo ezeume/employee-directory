@@ -1,12 +1,12 @@
 import React from "react";
-
+import "../Search/style.css";
 
 class Search extends React.Component {
     render() {
         return (
             <>
             
-            <input type="text" id="searchBox" placeholder="Search" />
+            <input className="txtInput" type="text" id="searchBox" placeholder="Search" />
             </>
 
         );
