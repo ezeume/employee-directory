@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import API from "../../API"
+import Search from "../Search";
 
 
 
@@ -14,11 +15,7 @@ class EmployeeTable extends React.Component {
     //API call
     componentDidMount() {
         API.search().then(results => {
-        this.setState({ employees: results.data.results.map(function(result){
-            result.fullName=result.name.first + " " + result.name.last
-            console.log(result)
-            return result;
-        })});
+            this.setState({ employees: results.data.results });
         });
     }
 
@@ -38,18 +35,26 @@ class EmployeeTable extends React.Component {
         
         });
 
-        console.log(sortedEmployees);
+        
 
         // If descending, reverse with sortedEmployees.reverse()
-        if(this.state.sortOrder === "DESC") {
-            sortedEmployees.reverse();
-            this.setState({sortOrder: "ASC"});
-        } else {
-            this.setState({sortOrder: "DESC"});
-        }
-            this.setState({ employees: sortedEmployees})
 
-        this.setState({employees: sortedEmployees});
+        if(this.state.sortOrder === "DESC") {
+            console.log("SORT BY DESC")
+            sortedEmployees.reverse();
+        
+            console.log(sortedEmployees);
+            this.setState({employees: sortedEmployees, sortOrder: "ASC"});
+        } else {
+            console.log("SORT BY ASC")
+        
+            console.log(sortedEmployees);
+            this.setState({employees: sortedEmployees, sortOrder: "DESC"});
+        }
+        
+        console.log("*************");
+        console.log(this.state.employees);
+        console.log("*************");
     } 
 
 // // Sort people by last name
@@ -83,8 +88,13 @@ class EmployeeTable extends React.Component {
 
 
     //Render the search results on the page 
+handleSearchChange(){
+    console.log("test")
+}
     render() {
             return(
+                <>
+                <Search handleSearchChange={this.handleSearchChange} />
                 <table>
                     <thead>
                         <tr>
@@ -98,10 +108,10 @@ class EmployeeTable extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.employees.map(person => (
-                        <tr key={person.id.value}>
+                        {this.state.employees && this.state.employees.map(person => (
+                        <tr key={person.login.uuid}>
                             <td><img src={person.picture.thumbnail}alt="thumbnail" /></td>
-                            <td>{person.fullName}</td>
+                            <td>{person.name.first} {person.name.last}</td>
                             {/* <td>{person.name.last}</td> */}
                             <td>{person.phone}</td>
                             <td>{person.email}</td>
@@ -110,6 +120,7 @@ class EmployeeTable extends React.Component {
                         ))}
                     </tbody>
                 </table>
+                </>
             );
     }
 }
