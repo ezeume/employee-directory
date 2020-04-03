@@ -39,14 +39,12 @@ class EmployeeTable extends React.Component {
         sortOrder: ""
     }
 
+    //API call
     componentDidMount() {
         API.search().then(results => {
-          this.setState({
-            employees: results.data.results
-       
-          });
+        this.setState({ employees: results.data.results});
         });
-      }
+    }
 
     // componentDidMount(){
     //     let temp = API.search()
@@ -58,7 +56,7 @@ class EmployeeTable extends React.Component {
 
     //         this.setState({employees:data.data.results});            
     //     });
-       
+    
     // }
 
     sortByName = () => {
@@ -78,16 +76,23 @@ class EmployeeTable extends React.Component {
         console.log(sortedEmployees);
 
         // If descending, reverse with sortedEmployees.reverse()
+        if(this.state.sortOrder === "DESC") {
+            sortedEmployees.reverse();
+            this.setState({sortOrder: "ASC"});
+        } else {
+            this.setState({sortOrder: "DESC"});
+        }
+            this.setState({ employees: sortedEmployees})
 
         this.setState({employees: sortedEmployees});
     } 
 
+    //Render the search results on the page 
     render() {
             return(
                 <table>
                     <thead>
                         <tr>
-
                             <th>Image</th>
                             <th>Name<button onClick={this.sortByName}>Sort</button></th>
                             <th>Phone</th>
@@ -98,12 +103,13 @@ class EmployeeTable extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.employees.map(person => (
-                        <tr key={person.id}>
-                            <td>{person.picture}</td>
-                            <td>{person.name}</td>
+                        <tr key={person.id.value}>
+                            <td><img src={person.picture.thumbnail}alt="thumbnail" /></td>
+                            <td>{person.name.first}</td>
+                            <td>{person.name.last}</td>
                             <td>{person.phone}</td>
                             <td>{person.email}</td>
-                            <td>{person.dob}</td>
+                            <td>{person.dob.date}</td>
                         </tr>
                         ))}
                     </tbody>
