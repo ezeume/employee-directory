@@ -1,11 +1,12 @@
 import React from "react";
-
+import "../Header/style.css";
 
 function Header() {
     return (
-        <>
-            <h1>Employee directory</h1>
-        </>
+        <header className="header">  
+            <h1 className="title">Employee directory</h1>
+            <p className="desc">Click on carrots to filter by heading or use the search box to narrow your results.</p>
+        </header>
     );
 }
 
