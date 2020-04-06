@@ -5,3 +5,13 @@ table {
 th, td {
     text-align: center;
 }
+
+#sortBtn{
+    padding-top: 0px;
+    margin-left: 10px;
+}
+
+#subHead{
+    font-size: 20px;
+    color: rgb(14, 21, 54);
+}
