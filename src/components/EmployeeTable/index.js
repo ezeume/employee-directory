@@ -43,6 +43,8 @@ class EmployeeTable extends React.Component {
     }
   };
 
+
+//Handle search input
   handleSearchChange = (event) => {
     if (event.target.name === "search") {
       const searchTerm = event.target.value.toLowerCase();
@@ -60,6 +62,7 @@ class EmployeeTable extends React.Component {
     }
   };
 
+  //This will render the search results on the page
   render() {
     return (
       <>
