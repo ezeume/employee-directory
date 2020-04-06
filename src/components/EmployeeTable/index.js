@@ -60,17 +60,6 @@ class EmployeeTable extends React.Component {
     }
   };
 
-  //call a function to filter with the employee data
-  //   filteremployee = () => {
-  //       console.log("filteremployee")
-  //     let empfilter = this.state.employees.filters((employee) =>
-  //       employee.id.name.toLowerCase.includes(this.state.search)
-  //     );
-  //     this.setState({
-  //         employees:empfilter
-  //     })
-  //   };
-
   render() {
     return (
       <>
