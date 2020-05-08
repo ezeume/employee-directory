@@ -1,8 +1,8 @@
 .header {
-    background: rgb(12, 12, 51);
+    background: rgba(2, 18, 32, 0.74);
     height: 200px;
     border-bottom: solid;
-    border-color: red;
+    border-color: rgb(3, 7, 27);
 }
 
 .title {
